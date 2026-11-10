@@ -13,8 +13,10 @@ frontend/
 │   ├── project/                           CONTENT_STATUS + ASSETS_MANIFEST
 │   └── workflow/                          EXECUTION_PHASES + QUALITY_CHECKLIST
 ├── assets/images/                         6 obras reales de la artista (JPG ~720–750px)
-└── mockup/                                maqueta v1 (histórico, ADR-004 del raíz)
-    ├── index.html  css/  js/  assets/fonts/ (Cormorant Garamond 400 + Inter variable)
+├── mockup/                                maqueta v1 (histórico, ADR-004 del raíz)
+│   ├── index.html  css/  js/  assets/fonts/ (Cormorant Garamond 400 + Inter variable)
+└── mockup-v2/                             maqueta v2 "THE EMPTY STAGE" (Home, HTML/CSS sin JS, 2025-11-10)
+    ├── index.html  css/tokens.css (literal de redesign_v2/02)  css/styles.css  assets/fonts/ (Newsreader + Instrument Sans woff2)
 ```
 
 ## Lo que NO existe todavía

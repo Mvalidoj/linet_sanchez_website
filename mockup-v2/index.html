@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<!-- MAQUETA v2 "THE EMPTY STAGE" — validación visual del concepto aprobado
+     (docs/design/redesign_v2/). HTML + CSS puro, SIN JS. Descartable.
+     Marcas de contenido según docs/project/CONTENT_STATUS.md §1:
+     copy propuesto = (d) · traducción = (d-EN) · "Artwork identification pending".
+     El mapping imagen↔serie NO se hace a propósito (identificación pendiente). -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F3F2F0">
+  <title>Linet Sánchez — Artist Portfolio</title>
+  <meta name="description" content="Portfolio of contemporary visual artist Linet Sánchez. Photography, sculpture and video.">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- ============ HEADER (04 §1) ============ -->
+  <!-- MOCKUP: "More" es <details> nativo (CSS-only). El panel modal accesible
+       real exige JS y llega en la ejecución (04 §2). -->
+  <header class="site-header">
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Open navigation menu" aria-controls="menu-panel">
+    <div class="container header-inner">
+      <h1 class="wordmark"><a href="#">Linet S&aacute;nchez</a></h1>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <a class="nav-link" href="#">Work</a>
+        <a class="nav-link" href="#">About</a>
+        <a class="nav-link" href="#contact">Contact</a>
+        <!-- Not implemented in mockup: other routes -->
+        <details class="more" aria-label="More pages">
+          <summary class="nav-link">More</summary>
+          <div class="more-panel">
+            <ul>
+              <li><a class="nav-link" href="#">Press</a></li>
+              <li><a class="nav-link" href="#">Exhibitions</a></li>
+            </ul>
+          </div>
+        </details>
+      </nav>
+
+      <label for="menu-toggle" class="menu-toggle-label" tabindex="0">Menu</label>
+    </div>
+
+    <div id="menu-panel" class="menu-panel" aria-label="Navigation">
+      <ul>
+        <li><a href="#">Work</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Exhibitions</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ ACTO I — vestíbulo (03 §A) ============ -->
+    <section class="act act-i" aria-label="Introduction">
+      <div class="container grid12">
+        <!-- (d) proposed copy -->
+        <p class="statement">The architecture of memory is an empty stage lit for no&nbsp;one.</p>
+
+        <figure class="work-well work-well--primary reveal" aria-label="Featured work">
+          <img src="../assets/images/SnapInsta.to_793024467_18378680449233708_4659807328435137637_n_750.jpg"
+               alt="Photograph of white brick arches lit from within inside an empty architectural model"
+               width="750" height="750" fetchpriority="high">
+          <!-- identification pending (CONTENT_STATUS B2): placa mínima, sin título -->
+          <figcaption class="work-plate">
+            <span class="plate-pending">Artwork identification pending</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ ACTO II — catálogo (03 §A) ============ -->
+    <section class="act act-ii" aria-label="Catalogue of series">
+      <div class="container grid12">
+
+        <aside class="series-index" aria-label="Series index">
+          <h2 class="series-index-label">The catalogue</h2>
+          <ul>
+            <li><a href="#"><span class="si-years">2012 — 2016</span><span class="si-name">Untitled series</span></a></li>
+            <li><a href="#"><span class="si-years">2015 — 2016</span><span class="si-name">00:00:00</span></a></li>
+            <li><a href="#"><span class="si-years">2017 — 2021</span><span class="si-name">Untitled series #2</span></a></li>
+            <li><a href="#"><span class="si-years">2018 — 2020</span><span class="si-name">00:00:00 #2</span></a></li>
+            <li><a href="#"><span class="si-years">2021</span><span class="si-name">00:00:00 #2, video stills</span></a></li>
+            <li><a href="#"><span class="si-years">2014 — 2018</span><span class="si-name">Untitled, sculptures</span></a></li>
+            <li><a href="#"><span class="si-years">2017 — 2018</span><span class="si-name">Untitled, reliefs</span></a></li>
+            <li><a href="#"><span class="si-years">2023 — 2024</span><span class="si-name">00:00:00 #3, the Sets</span></a></li>
+          </ul>
+        </aside>
+
+        <!-- 4 obras disponibles (pozas de escalas alternadas); la fila de serie
+             NO pretende asignar la imagen a una serie (Regla 7). -->
+        <div class="catalogue">
+          <article class="work-row work-row--wide">
+            <a class="link-well" href="#" aria-label="Open work (pending identification)">
+              <div class="work-well">
+                <img src="../assets/images/SnapInsta.to_621461517_18349346938230962_6148461694027019_n_750.jpg"
+                     alt="Bright light cast through a gridded lattice arch inside a white architectural model"
+                     width="750" height="750" loading="lazy">
+              </div>
+            </a>
+            <div class="work-plate">
+              <span class="plate-pending">Artwork identification pending</span>
+            </div>
+          </article>
+
+          <article class="work-row">
+            <a class="link-well" href="#" aria-label="Open work (pending identification)">
+              <div class="work-well">
+                <img src="../assets/images/SnapInsta.to_754068894_18369041617233708_5863708367764146732_n_720.jpg"
+                     alt="A shaft of light falling across a white staircase and wall inside an architectural model"
+                     width="720" height="892" loading="lazy">
+              </div>
+            </a>
+            <div class="work-plate">
+              <span class="plate-pending">Artwork identification pending</span>
+            </div>
+          </article>
+
+          <article class="work-row work-row--wide">
+            <a class="link-well" href="#" aria-label="Open work (pending identification)">
+              <div class="work-well">
+                <img src="../assets/images/SnapInsta.to_830349656_18387763303230962_2244985092351060736_n_720.jpg"
+                     alt="Photograph of stacked curved wooden plates inside a vertical architectural model"
+                     width="720" height="655" loading="lazy">
+              </div>
+            </a>
+            <div class="work-plate">
+              <span class="plate-pending">Artwork identification pending</span>
+            </div>
+          </article>
+
+          <article class="work-row">
+            <a class="link-well" href="#" aria-label="Open work (pending identification)">
+              <div class="work-well">
+                <img src="../assets/images/SnapInsta.to_755693858_18369041608233708_723332173755477088_n_750.jpg"
+                     alt="A white staircase rising through a doorway, framed by the model's braced structure"
+                     width="750" height="750" loading="lazy">
+              </div>
+            </a>
+            <div class="work-plate">
+              <span class="plate-pending">Artwork identification pending</span>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============ ACTO III — 00:00:00 (penumbra, 03 §A) ============ -->
+    <section class="act act-iii" aria-label="Dark room: 00:00:00">
+      <div class="container">
+        <p class="act-marker">00:00:00</p>
+
+        <!-- stand-in del díptico (single panel); el díptico real llega con el asset -->
+        <a class="link-well" href="#" aria-label="Open the 00:00:00 work (pending identification)">
+          <figure class="work-well work-well--dark">
+            <img src="../assets/images/SnapInsta.to_830390327_18387763264230962_6088494553289060609_n_720.jpg"
+                 alt="A wooden architectural stage-set model with open braced walls, photographed on a dark stage"
+                 width="720" height="480" loading="lazy">
+          </figure>
+        </a>
+        <div class="work-plate work-plate--dark">
+          <span class="plate-pending">Artwork identification pending</span>
+        </div>
+
+        <!-- (d-EN): cita del dossier (ES original: "el espacio conserva tiempo comprimido") -->
+        <blockquote class="quote">
+          <p>&ldquo;The space preserves time in&nbsp;compression.&rdquo;</p>
+          <cite>&mdash;&nbsp;Gaston Bachelard, <i>The Poetics of Space</i></cite>
+        </blockquote>
+
+        <p><a class="text-link--dark" href="#">View the series</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ ACTO IV — colofón (03 §A / 04 §12) ============ -->
+  <footer id="contact" class="colophon">
+    <div class="container">
+      <div class="grid12 colophon-grid">
+        <p class="colophon-label">About</p>
+        <div class="colophon-body">
+          <!-- (d-EN) excerpt propuesto del statement del dossier — no publicado sin confirmar -->
+          <p class="colophon-excerpt">Linet S&aacute;nchez builds empty, colorless architectural spaces &mdash; houses remembered, theatres danced, stages never entered &mdash; and photographs, films and exhibits them as sculptural objects.</p>
+
+          <p class="empty-state">Press documentation will be published here.</p>
+          <p class="empty-state">Exhibition history is being documented.</p>
+        </div>
+
+        <p class="colophon-label">Contact</p>
+        <div class="colophon-body">
+          <div class="contact-links">
+            <a href="mailto:linetsg@gmail.com">linetsg@gmail.com</a>
+            <a href="https://www.instagram.com/linetsanchezart" rel="noopener">@linetsanchezart</a>
+            <span class="empty-state">Havana, Cuba</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="colophon-wordmark wordmark"><a href="#">Linet S&aacute;nchez</a></p>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="#">Work</a>
+          <a href="#">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <!-- (d) año propuesto -->
+        <span class="copyright">&copy; Linet S&aacute;nchez</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

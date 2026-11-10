@@ -67,6 +67,9 @@ Sin modo claro/oscuro conmutable: la coreografía de iluminación es fija por p�
   --fs-hero:    clamp(42px, 6.5vw, 92px);
   --fs-display: clamp(30px, 3.8vw, 54px);
   --fs-title:   clamp(22px, 2.4vw, 34px);
+  /* añadido al aplicar el mockup v2 (2025-11-10): el statement hero del Acto I
+     necesita peso visual propio sobre la poza — antes iba en --fs-body-lg */
+  --fs-statement: clamp(22px, 2.4vw, 34px);
   --fs-body-lg: clamp(18px, 1.5vw, 21px);
   --fs-body:    clamp(15px, 1.05vw, 17px);
   --fs-meta:    clamp(12px, 0.9vw, 13px);

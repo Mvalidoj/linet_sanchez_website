@@ -1,0 +1,91 @@
+/* ============================================================================
+   tokens.css — Sistema de design tokens
+   Traslación literal de docs/design/DESIGN_TOKENS.md (especificación).
+   Único archivo de la maqueta previsto para reutilizarse en Fase 1 (ADR-004).
+   ========================================================================== */
+
+/* --- 1. Color ------------------------------------------------------------- */
+:root {
+  --color-warm-paper:   #F3F2EE;
+  --color-gallery-grey: #E7E5DF;
+  --color-soft-black:   #222220;
+  --color-stone-grey:   #898780;
+  --color-concrete:     #C9C6BE;
+  --color-mist:         #DAD9D3;
+  --color-white:        #FFFFFF;
+  --color-divider:      #D3D1CA;
+}
+
+/* --- Fuentes locales (assets/fonts/, descarga offline) -------------------- */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../assets/fonts/CormorantGaramond-400-latin.woff2') format('woff2');
+}
+/* Inter se sirve como fuente variable (rango de pesos completo) */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../assets/fonts/Inter-var-latin.woff2') format('woff2-variations');
+}
+
+:root {
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-ui: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* --- 3. Escala tipográfica (clamp fluido; propuesta de DESIGN_TOKENS §3) --- */
+:root {
+  --font-hero:    clamp(46px, 6vw, 88px);
+  --font-page:    clamp(40px, 4.5vw, 64px);
+  --font-section: clamp(30px, 2.8vw, 40px);
+  --font-project: clamp(26px, 2.2vw, 32px);
+  --font-body-lg: clamp(18px, 1.4vw, 20px);
+  --font-body:    clamp(15px, 1vw, 16px);
+  --font-meta:    clamp(11px, 0.85vw, 12px);
+  --font-nav:     clamp(12px, 0.9vw, 13px);
+
+  --leading-paragraphs: 1.6;
+  --leading-headings:   1.05;
+  --tracking-meta:      0.08em;
+}
+
+/* --- 4. Espaciado (base 4) ------------------------------------------------- */
+:root {
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;
+  --space-4: 16px;  --space-5: 24px;  --space-6: 32px;
+  --space-7: 48px;  --space-8: 64px;  --space-9: 96px;
+  --space-10: 128px;
+}
+
+/* --- 5. Layout y grid ------------------------------------------------------ */
+:root {
+  --max-width: 1440px;
+  --margin-page: var(--space-5);      /* móvil 20–24px */
+  --section-spacing: 72px;            /* desktop 120–160px (ver styles.css) */
+  --grid-columns: 4;                  /* móvil */
+  --gutter: var(--space-3);           /* móvil 12–16px */
+}
+
+/* --- 6. Bordes y formas ----------------------------------------------------- */
+:root {
+  --radius-default: 0px;
+  --border-hairline: 1px solid var(--color-divider);
+}
+
+/* --- 7. Transiciones --------------------------------------------------------- */
+:root {
+  --dur-hover:  200ms;
+  --dur-menu:   250ms;
+  --dur-reveal: 500ms;
+  --dur-page:   300ms;
+  --ease: ease-out;
+}
+
+/* --- 8. Breakpoints -----------------------------------------------------------
+   bp-mobile: <768px (base) · bp-tablet: 768–1199px · bp-desktop: >=1200px
+   (usar en styles.css con min-width) */

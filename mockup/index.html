@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!-- MAQUETA (ADR-004) — Prototipo estático descartable para validar el lenguaje
+     visual. NO es el sitio de producción. Las 6 imágenes son material de la
+     artista pendiente de identificación (ver content guidelines). -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Linet Sánchez — Artist Portfolio</title>
+  <meta name="description" content="Portfolio of contemporary visual artist Linet Sánchez. Photography, sculpture and video.">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="#" class="wordmark">Linet S&aacute;nchez</a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#" aria-current="page">Home</a></li>
+          <li><a href="#">Work</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Exhibitions</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+    </div>
+  </header>
+
+  <div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation" aria-hidden="true">
+    <button class="menu-close">Close</button>
+    <nav aria-label="Primary mobile">
+      <ul>
+        <li><a href="#" aria-current="page">Home</a></li>
+        <li><a href="#">Work</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Exhibitions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="main">
+
+    <!-- ============================= HERO ============================= -->
+    <!-- DRAFT COPY — proposed, not verified. See CONTENT_GUIDELINES.md -->
+    <section class="hero" aria-label="Introduction">
+      <div class="container">
+        <div class="hero-copy">
+          <h1 class="hero-title">Between memory, absence and imagination.</h1>
+          <p class="hero-statement is-draft">Through photography, sculpture and video, Linet S&aacute;nchez explores the architecture of memory and the spaces between remembered experience and imagined reality.</p>
+        </div>
+        <figure class="hero-media">
+          <img src="../assets/images/SnapInsta.to_793024467_18378680449233708_4659807328435137637_n_750.jpg"
+               alt="Photograph of a white brick architectural model with gothic arches lit from within"
+               width="750" height="750">
+          <figcaption><span class="meta">Artwork identification pending</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ======================= ARTISTIC PRACTICE ======================= -->
+    <!-- DRAFT COPY — proposed, not verified. See CONTENT_GUIDELINES.md -->
+    <section class="section practice" aria-labelledby="practice-heading">
+      <div class="container">
+        <div class="practice-label-col">
+          <h2 class="label" id="practice-heading">Artistic practice</h2>
+        </div>
+        <div class="practice-body">
+          <p class="practice-statement is-draft">My practice explores the relationship between memory, architecture and the spaces we inhabit, both physically and mentally.</p>
+          <p class="practice-support is-draft">Through photography, sculpture and video, I construct and examine empty environments that exist somewhere between remembered experience and imagined reality.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================== SELECTED WORKS ========================== -->
+    <!-- Las imágenes NO están identificadas como obras concretas: no se asignan
+         títulos del catálogo preliminar (Regla 7 / CONTENT_GUIDELINES.md). -->
+    <section class="section works" aria-labelledby="works-heading">
+      <div class="container">
+        <h2 class="section-heading" id="works-heading">Selected Works</h2>
+        <ul class="works-grid">
+          <li class="work">
+            <figure>
+              <div class="work-media"><a href="#">
+                <img src="../assets/images/SnapInsta.to_621461517_18349346938230962_6148461694027019_n_750.jpg"
+                     alt="Photograph of a stairway in an empty architectural model with a diagonal shaft of light"
+                     width="750" height="750" loading="lazy">
+              </a></div>
+              <figcaption><span class="meta">Artwork identification pending</span></figcaption>
+            </figure>
+          </li>
+          <li class="work">
+            <figure>
+              <div class="work-media"><a href="#">
+                <img src="../assets/images/SnapInsta.to_830349656_18387763303230962_2244985092351060736_n_720.jpg"
+                     alt="Photograph of stacked curved wooden plates inside a vertical architectural model"
+                     width="720" height="655" loading="lazy">
+              </a></div>
+              <figcaption><span class="meta">Artwork identification pending</span></figcaption>
+            </figure>
+          </li>
+          <li class="work">
+            <figure>
+              <div class="work-media"><a href="#">
+                <img src="../assets/images/SnapInsta.to_755693858_18369041608233708_723332173755477088_n_750.jpg"
+                     alt="Photograph of a narrow stairway rising between two walls of an architectural model"
+                     width="750" height="750" loading="lazy">
+              </a></div>
+              <figcaption><span class="meta">Artwork identification pending</span></figcaption>
+            </figure>
+          </li>
+          <li class="work">
+            <figure>
+              <div class="work-media"><a href="#">
+                <img src="../assets/images/SnapInsta.to_754068894_18369041617233708_5863708367764146732_n_720.jpg"
+                     alt="Photograph of light falling across a gridded white arched surface of an architectural model"
+                     width="720" height="892" loading="lazy">
+              </a></div>
+              <figcaption><span class="meta">Artwork identification pending</span></figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========================== ABOUT PREVIEW =========================== -->
+    <section class="section about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about-copy">
+          <h2 class="section-heading" id="about-heading">About the artist</h2>
+          <!-- DRAFT COPY — proposed, not verified. No biographical information exists yet. -->
+          <p class="is-draft">Linet S&aacute;nchez is a contemporary visual artist. Her practice spans photography, sculpture and video.</p>
+          <a class="text-link" href="#">About the artist</a>
+        </div>
+        <figure class="about-media">
+          <img src="../assets/images/SnapInsta.to_830390327_18387763264230962_6088494553289060609_n_720.jpg"
+               alt="Photograph of a wooden architectural model standing on a floor against a dark background"
+               width="720" height="480" loading="lazy">
+          <figcaption><span class="meta">Artwork identification pending</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ======================= PRESS (estado vacío) ======================= -->
+    <section class="section press" aria-labelledby="press-heading">
+      <div class="container">
+        <h2 class="section-heading" id="press-heading">Press</h2>
+        <!-- DRAFT COPY — proposed, not verified. -->
+        <p class="empty-state is-draft">Press documentation will be published here.</p>
+      </div>
+    </section>
+
+    <!-- =================== EXHIBITIONS (estado vacío) ==================== -->
+    <section class="section exhibitions" aria-labelledby="exhibitions-heading">
+      <div class="container">
+        <h2 class="section-heading" id="exhibitions-heading">Exhibitions</h2>
+        <!-- DRAFT COPY — proposed, not verified. -->
+        <p class="empty-state is-draft">Exhibition history is being documented.</p>
+      </div>
+    </section>
+
+    <!-- ============================= CONTACT ============================= -->
+    <section class="section contact" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <h2 class="section-heading" id="contact-heading">Let&rsquo;s start a conversation.</h2>
+        <!-- DRAFT COPY — proposed, not verified. -->
+        <div class="contact-block">
+          <p class="is-draft">For exhibitions, collaborations, publications and professional enquiries.</p>
+          <a class="text-link" href="mailto:linetsg@gmail.com">linetsg@gmail.com</a>
+          <a class="text-link" href="https://www.instagram.com/linetsanchezart" rel="noopener">@linetsanchezart</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span class="wordmark">Linet S&aacute;nchez</span>
+      <nav aria-label="Footer">
+        <ul class="primary-nav">
+          <li><a href="#">Work</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <span class="meta">&copy; Linet S&aacute;nchez</span>
+    </div>
+  </footer>
+
+  <script src="js/menu.js"></script>
+</body>
+</html>
