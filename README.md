@@ -4,7 +4,7 @@
 
 ## Cómo abrirla
 
-Abrir `index.html` directamente (`file://`). Todo es local: fuentes woff2 variable (Newsreader roman/italic + Instrument Sans, latín) e imágenes se referencian desde `../assets/images/`.
+Abrir `index.html` directamente (`file://`). Todo es local: fuentes woff2 variable (Newsreader roman/italic + Instrument Sans, latín) e imágenes se referencian desde `assets/images/`.
 
 Notas:
 - Si el ordenador no tiene internet la maqueta funciona igual (fuentes locales). *(Las fuentes se descargaron con nombres `Newsreader-var-latin.woff2`, `Newsreader-Italic-var-latin.woff2`, `InstrumentSans-var-latin.woff2` — ver `docs/project/ASSETS_MANIFEST.md §2`.)*

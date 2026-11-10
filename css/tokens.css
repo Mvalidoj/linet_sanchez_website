@@ -11,7 +11,7 @@
   font-weight: 200 800;
   font-stretch: normal;
   font-display: swap;
-  src: url('../assets/fonts/Newsreader-var-latin.woff2') format('woff2-variations');
+  src: url('assets/fonts/Newsreader-var-latin.woff2') format('woff2-variations');
 }
 @font-face {
   font-family: 'Newsreader';
@@ -19,7 +19,7 @@
   font-weight: 200 800;
   font-stretch: normal;
   font-display: swap;
-  src: url('../assets/fonts/Newsreader-Italic-var-latin.woff2') format('woff2-variations');
+  src: url('assets/fonts/Newsreader-Italic-var-latin.woff2') format('woff2-variations');
 }
 @font-face {
   font-family: 'Instrument Sans';
@@ -27,7 +27,7 @@
   font-weight: 400 600;
   font-stretch: normal;
   font-display: swap;
-  src: url('../assets/fonts/InstrumentSans-var-latin.woff2') format('woff2-variations');
+  src: url('assets/fonts/InstrumentSans-var-latin.woff2') format('woff2-variations');
 }
 
 /* --- 1. Color ------------------------------------------------------------- */
