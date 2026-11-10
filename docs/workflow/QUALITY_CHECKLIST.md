@@ -1,67 +1,66 @@
-# QUALITY_CHECKLIST
+# QUALITY_CHECKLIST — QA por fase (v2)
 
-> Checklist reutilizable. Aplica a cada página/componente nuevo y a cada entrega de fase. Marcar las desviaciones conocidas en el reporte final (Regla 12).
+> Correr al cierre de cada fase antes de pedir aprobación. Fuentes: `../design/redesign_v2/06 §8`, matriz de estados del 04, reglas de placas/estados vacíos del 05, `CONTENT_STATUS` y `ASSETS_MANIFEST`. Marca ✓ / ✗ con nota; todo ✗ se resuelve o se declara como limitación en el informe de fase.
 
-## 1. Consistencia visual
+## 1. Sistema de diseño
 
-- [ ] Usa solo tokens de `../design/DESIGN_TOKENS.md` (colores, espaciado, tipografía, transiciones). Si hubo token nuevo, está documentado.
-- [ ] Border radius 0; sin shadow, gradientes ni iconos decorativos.
-- [ ] La composición sigue la retícula (12/6/4 cols) y el espaciado de `LAYOUT_AND_SPACING.md`; alineaciones deliberadas.
-- [ ] Tipografía correcta por rol (Cormorant Garamond display / Inter interface) según `TYPOGRAPHY.md`.
-- [ ] El resultado refuerza "THE ARCHITECTURE OF MEMORY"; nada genérico ni "de plantilla".
+- [ ] Ningún color/espaciado/tipografía fuera de tokens (`02`); sin valores mágicos en componentes.
+- [ ] Sin bordes decorativos, sombras, gradientes, iconos, radios > 0, cards, patrones genéricos.
+- [ ] `--hairline` usado solo donde 04/03 lo permiten.
+- [ ] Todas las obras sin recorte (`object-fit: contain`, proporciones naturales, width/height explícitos).
+- [ ] Render de imágenes dentro del límite 1.5× hasta assets finales (`ASSETS_MANIFEST §1`).
 
-## 2. Responsive
+## 2. Contenido y marcas
 
-- [ ] Validado en 1440×900, 1024×768 (tablet apaisada), 768×1024 y 390×844 (mínimo); sin overflow horizontal en ninguna sección.
-- [ ] Comportamiento móvil intencional (columna única legible, jerarquía mantenida), no desktop encogido.
-- [ ] Aspect ratios de obras preservados.
-- [ ] Espaciado móvil reducido con cuidado; el espacio negativo sobrevive.
-- [ ] Menú móvil: overlay accesible, focus trap, cierres con Esc y bloqueo de scroll.
+- [ ] Todo dato de obra trazable a `05 §2–§4`; ningún título/medida/año inventado.
+- [ ] Cada texto no verificado lleva su marca del lenguaje `CONTENT_STATUS §1` (`(d)`, `(d-EN)`, `Artwork identification pending`).
+- [ ] Estados vacíos presentes con copy de `CONTENT_STATUS §3` (una línea, sin cajas, vía de contacto cuando aplique).
+- [ ] Contacto público = email + Instagram + ciudad (sin teléfono/dirección — B8).
 
-## 3. Contenido e integridad
+## 3. Tipografía y microtexto
 
-- [ ] Cero contenido inventado (bio, títulos, fechas, dimensiones, exposiciones, premios, materiales, curadores).
-- [ ] Nivel de cada dato clasificado (verified / preliminary / pending) y reflejado en código/docs (`../project/CONTENT_GUIDELINES.md`).
-- [ ] Campos desconocidos: omitidos o marcados; sin "TBD" decorativo.
-- [ ] Estado vacío sobrio en secciones sin contenido (no relleno compensatorio).
-- [ ] Las obras se muestran con assets reales o placeholders claramente identificados (nunca stock disfrazado de obra).
-- [ ] Copy visible del sitio en inglés; sin mezclar idiomas en la UI.
+- [ ] `tabular-nums` en años/medidas/contadores/timestamps.
+- [ ] Sin mayúsculas forzadas en labels; tracking solo `--ls-meta`.
+- [ ] `text-wrap: balance` en headings; `text-wrap: pretty` en párrafos; máx. 68–72 ch por línea de cuerpo.
+- [ ] Comillas curvas y `…` (no `...`); espacios no separables en unidades ("100 × 150 cm").
 
-## 4. Accesibilidad
+## 4. Accesibilidad (AA)
 
-- [ ] Operable por teclado completo; orden de foco lógico.
-- [ ] Foco visible en todo elemento interactivo.
-- [ ] Alt text descriptivo y factual en todas las imágenes.
-- [ ] HTML semántico y jerarquía de headings correcta.
-- [ ] Contrastes suficientes (metadata Stone Grey sobre fondos nuevos).
-- [ ] `prefers-reduced-motion` respetado (sin reveals/zoom cuando reduce).
-- [ ] Lightbox y modales: focus trap, Esc, retorno de foco, `aria-*` correctos.
+- [ ] Contraste verificado de todos los pares usados (tabla `02 §1`).
+- [ ] Un solo `h1` por página; jerarquía de headings correcta; `scroll-margin-top` en anclas.
+- [ ] Skip-link presente y funcional; foco visible (outline 2px) en TODO interactivo.
+- [ ] Menú modal: `role="dialog"`, `aria-modal`, focus trap, `Esc`, devolución de focus, `aria-expanded` correcto.
+- [ ] Imágenes con `alt` descriptivo; `figcaption` en cada placa.
+- [ ] Contador del visor con `aria-live="polite"`; deep-links como `<a>` reales.
+- [ ] Áreas táctiles ≥ 44 px; `touch-action: manipulation`; nada hover-only.
+- [ ] `prefers-reduced-motion`: reveal y cross-fades apagados, obra visible al instante.
 
 ## 5. Interacción / motion
 
-- [ ] Solo interacciones permitidas (`../design/INTERACTION_GUIDELINES.md` §3); ninguna de las prohibidas (§4).
-- [ ] Duraciones estándar (200/250/300/500ms, zoom máx. 1.02).
-- [ ] Funcionalidad no depende de la animación.
-- [ ] Anima solo `opacity`/`transform`.
-- [ ] Un solo patrón de hover por tipo de componente, todo el sitio.
+- [ ] Reveal único SOLO en Home Acto I (una vez por visita); ningún fade en cada sección ni en scroll.
+- [ ] Solo `opacity`/`transform` animados; nunca `transition: all`; timings de `02 §8`.
+- [ ] Hover de obra `.94 → 1` en 320 ms; reposo encendido en táctil.
+- [ ] Sin carousels, loops o autoplay (`06 §6`: video con botón de texto, sin sonido por defecto).
 
-## 6. Performance / código
+## 6. Responsive
 
-- [ ] JS mínimo; sin dependencias nuevas sin justificación.
-- [ ] Imágenes: formatos modernos cuando proceda, lazy loading bajo el fold, preload solo del hero si justificado.
-- [ ] Calidad de imagen no sacrificada por optimización (Regla 8).
-- [ ] Sin duplicación: reutiliza componentes existentes; sin rewrite de arquitectura funcional.
-- [ ] Código legible, seguimiento del idioma/convenios del código existente.
-- [ ] SEO básico por página: `<title>`, meta description, Open Graph; structured data cuando aplique (`Person` / `VisualArtwork`).
+- [ ] Desktop ≥1200 / tablet 768–1199 / móvil <768 según `06 §4` (rail desaparece como columna, placa bajo obra, nav → menú modal).
+- [ ] Sin scroll horizontal en 320/375/768/1024/1440/1920 px.
+- [ ] Acto oscuro full-bleed con safe-area insets respetado; diptych apila vertical bajo 768 px.
 
-## 7. Documentación
+## 7. Performance
 
-- [ ] Tokens nuevos documentados en `DESIGN_TOKENS.md`.
-- [ ] Componentes nuevos/reglas nuevas reflejadas en `COMPONENT_GUIDELINES.md`.
-- [ ] Cambios de estructura en `FILE_STRUCTURE.md`.
-- [ ] Decisiones nuevas o modificadas con ADR en `ARCHITECTURAL_DECISIONS.md`.
-- [ ] Estado de fase actualizado en `IMPLEMENTATION_PHASES.md` / `PROJECT_ROADMAP.md`.
+- [ ] 2 woff2 variable preloadeados, `font-display: swap`, `size-adjust` calibrado.
+- [ ] `fetchpriority="high"` solo en primera obra de Home; `loading="lazy"` en el resto.
+- [ ] JS mínimo sin librerías y sitio funcional sin JS (navegación, placas, catálogo).
+- [ ] CLS < 0.1.
 
-## 8. Reporte final (Regla 12)
+## 8. Documentación
 
-- [ ] Qué se implementó · archivos creados/modificados · decisiones de diseño · responsive validado · validación realizada · limitaciones conocidas · documentación actualizada.
+- [ ] Token nuevo o cambio de patrón → actualizado en el doc correspondiente (no en silencio).
+- [ ] Bloqueantes `CONTENT_STATUS §2` revisados (¿alguna marca ya resoluble?).
+- [ ] `../ARCHITECTURE.md` actualizado si cambió el estado del repo.
+
+## 9. Informe de fase (plantilla mínima)
+
+1. Qué se implementó (alcance vs. DoD de la fase) · 2. Archivos tocados · 3. Decisiones de diseño · 4. Comportamiento responsive · 5. Validación (esta checklist) · 6. Limitaciones conocidas (bloqueantes abiertos) · 7. Docs actualizados · 8. Solicitud de aprobación para la siguiente fase.

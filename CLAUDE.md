@@ -1,90 +1,65 @@
-# CLAUDE.md — Linet Sánchez · Artist Portfolio
+# CLAUDE.md — Linet Sánchez · Artist Portfolio (frontend)
 
-> **Punto de entrada obligatorio para cada sesión de trabajo.** Lee este archivo y la documentación pertinente al task antes de hacer ningún cambio. El repositorio es la fuente de verdad persistente; no asumas que el contexto de una conversación anterior es suficiente.
+> **Punto de entrada obligatorio para cada sesión en este repositorio.** Aquí vive el proyecto frontend. Lee este archivo y los docs que la tarea requiera antes de tocar nada. El repositorio es la fuente de verdad persistente; no asumas que el contexto de una conversación anterior es suficiente.
 
 ---
 
-## 1. Identidad del proyecto
+## 1. Qué es este proyecto
 
-| Campo | Valor |
-|---|---|
-| Proyecto | Linet Sánchez — Artist Portfolio |
-| Naturaleza | Sitio web editorial, sofisticado, listo para multilingüe (idioma público inicial: **inglés**) |
-| Cliente | Linet Sánchez, artista visual contemporánea (fotografía, escultura, video) |
-| Audiencia | Instituciones, curadores, galerías, coleccionistas, investigadores, prensa, profesionales del arte |
-| Concepto rector | **THE ARCHITECTURE OF MEMORY** — "A digital space between memory, absence and imagination" |
-
-**Lo que NO debe ser:** un portfolio genérico de fotógrafo, una web corporativa, una landing comercial o una plantilla. Debe sentirse como una exposición curada o un libro de artista impreso.
-
-**Nota de idioma:** todo el sitio público se publica en inglés, pero **la documentación interna (`docs/` y este archivo) se mantiene en español** (decisión registrada en ADR-001).
-
-## 2. Principios de diseño obligatorios
-
-Cinco principios guían cada decisión visual. Detalle completo en `docs/design/ART_DIRECTION.md`:
-
-1. **Arquitectura y espacio** — grids precisos, geometría, alineación deliberada.
-2. **Ausencia y vacío** — el espacio negativo es un elemento de diseño; no rellenar por rellenar.
-3. **Memoria y tiempo** — ritmo visual controlado, contemplativo, atemporal.
-4. **Teatralidad** — las imágenes como escenas; encuadre cinematográfico, composición deliberada.
-5. **Reconstrucción e introspección** — layouts modulares, asimetría, cambios sutiles de escala.
-
-## 3. Índice de documentación
-
-- **Contexto y alcance**
-  - [docs/project/PROJECT_OVERVIEW.md](docs/project/PROJECT_OVERVIEW.md) — qué es, audiencia, estado actual.
-  - [docs/project/ARTIST_CONTEXT.md](docs/project/ARTIST_CONTEXT.md) — práctica, temas, universo conceptual, referencias preliminares.
-  - [docs/project/CONTENT_GUIDELINES.md](docs/project/CONTENT_GUIDELINES.md) — reglas de contenido, inglés público, no inventar.
-  - [docs/project/PROJECT_ROADMAP.md](docs/project/PROJECT_ROADMAP.md) — roadmap en una vista.
-- **Diseño**
-  - [docs/design/ART_DIRECTION.md](docs/design/ART_DIRECTION.md) — concepto creativo completo.
-  - [docs/design/DESIGN_TOKENS.md](docs/design/DESIGN_TOKENS.md) — paleta, tokens (especificación; aún no implementados).
-  - [docs/design/TYPOGRAPHY.md](docs/design/TYPOGRAPHY.md) — Cormorant Garamond + Inter, escalas.
-  - [docs/design/LAYOUT_AND_SPACING.md](docs/design/LAYOUT_AND_SPACING.md) — grid, anchos, espaciado.
-  - [docs/design/RESPONSIVE_DESIGN.md](docs/design/RESPONSIVE_DESIGN.md) — comportamiento desktop/tablet/móvil.
-  - [docs/design/COMPONENT_GUIDELINES.md](docs/design/COMPONENT_GUIDELINES.md) — reglas por componente.
-  - [docs/design/INTERACTION_GUIDELINES.md](docs/design/INTERACTION_GUIDELINES.md) — motion, accesibilidad, teclado.
-- **Arquitectura**
-  - [docs/architecture/TECHNICAL_ARCHITECTURE.md](docs/architecture/TECHNICAL_ARCHITECTURE.md) — arquitectura planificada vs. implementada.
-  - [docs/architecture/CONTENT_MODEL.md](docs/architecture/CONTENT_MODEL.md) — modelo de contenido Sanity planificado.
-  - [docs/architecture/FILE_STRUCTURE.md](docs/architecture/FILE_STRUCTURE.md) — estructura del repositorio.
-  - [docs/architecture/ARCHITECTURAL_DECISIONS.md](docs/architecture/ARCHITECTURAL_DECISIONS.md) — registros ADR.
-- **Flujo de trabajo**
-  - [docs/workflow/DEVELOPMENT_WORKFLOW.md](docs/workflow/DEVELOPMENT_WORKFLOW.md) — cómo abordar cada tarea.
-  - [docs/workflow/IMPLEMENTATION_PHASES.md](docs/workflow/IMPLEMENTATION_PHASES.md) — fases de desarrollo.
-  - [docs/workflow/QUALITY_CHECKLIST.md](docs/workflow/QUALITY_CHECKLIST.md) — checklist de calidad reutilizable.
-
-Origen de todo: `context.txt` (brief maestro de inicialización, no modificar sin consenso).
-
-## 4. Reglas operativas permanentes
-
-1. **Leer el contexto primero.** Antes de cambiar nada, leer CLAUDE.md y la documentación pertinente al task.
-2. **Preservar el design system.** Nunca introducir un color, tipografía, espaciado, tratamiento de borde o patrón de interacción nuevo sin razón clara. Reutilizar tokens existentes; si hace falta uno nuevo, documentarlo junto a su implementación.
-3. **Preservar la identidad artística.** Toda decisión visual refuerza "THE ARCHITECTURE OF MEMORY". No plantillas genéricas ni modas visuales.
-4. **Respetar lo implementado.** Inspeccionar antes de modificar un componente. Preferir extender lo existente antes que duplicar. No reescribir arquitectura que funciona sin justificación.
-5. **Trabajo incremental.** Implementar solo la fase o feature pedida. No anticipar infraestructura futura. No implementar varias páginas cuando se pide una.
-6. **Consistencia responsive.** Todo componente/página nuevo funciona en desktop, tablet y móvil, siguiendo `RESPONSIVE_DESIGN.md`.
-7. **No inventar contenido.** Nunca inventar: biografía, títulos de obra, fechas, exposiciones, publicaciones, premios, materiales, dimensiones, curadores, galerías. Solo información verificada; marcar explícitamente lo faltante.
-8. **Proteger la integridad de las obras.** Nunca recortar, recolorear, distorsionar ni modificar obras. Usar assets reales; si hay placeholders, identificarlos claramente.
-9. **Documentar decisiones importantes.** Cambiar una decisión establecida exige: justificar, identificar docs afectados, actualizar el ADR y actualizar el documento correspondiente. No alterar el sistema en silencio.
-10. **Mantener documentación sincronizada.** Toda función reutilizable, token, regla o estructura nueva se documenta donde corresponda. La documentación describe el estado real, no un plan caducado.
-11. **Preguntar ante supuestos sustanciales.** Si un requisito importante admite interpretaciones muy distintas, hacer una pregunta concisa antes de proceder. Decisiones menores: juicio profesional + anotar el supuesto.
-12. **Explicar los cambios de implementación.** Al final de cada task: qué se implementó, archivos tocados, decisiones de diseño, comportamiento responsive, validación, limitaciones conocidas y documentación actualizada.
-
-## 5. Convenciones técnicas
-
-- **Arquitectura planificada** (aún NO implementada): Next.js + React + TypeScript, Sanity CMS, CSS Modules o sistema de estilos estructurado, hosting en Vercel. Detalle y estado real en `docs/architecture/TECHNICAL_ARCHITECTURE.md`.
-- **Secciones:** Home / Work / About / Press / Exhibitions / Contact — rutas `/`, `/work`, `/work/[slug]`, `/about`, `/press`, `/exhibitions`, `/contact`. No añadir secciones de navegación primarias sin aprobación explícita.
+- **Sitio web del portfolio de Linet Sánchez**, artista visual contemporánea (fotografía, escultura, video). Audiencia: instituciones, curadores, galerías, coleccionistas, prensa.
+- **Concepto curatorial (vigente):** *THE ARCHITECTURE OF MEMORY*.
+- **Concepto de diseño (vigente):** *THE EMPTY STAGE* — el sitio es un teatro vacío antes de la función; **la luz es el único suceso**; blanco arquitectónico + penumbra escénica + motivo `00:00:00` en cifras tabulares. Detalle completo: `docs/design/redesign_v2/01_DESIGN_CONCEPT.md`.
 - **Idioma público:** inglés. **Documentación interna:** español.
-- **Estilo de código:** seguir el idioma predominante del código en cada momento (una vez exista código frontend, los identificadores y comentarios irán en inglés).
-- Evitar siempre: tarjetas redondeadas, sombras innecesarias, gradientes, iconos decorativos, componentes de UI genéricos, bordes innecesarios, efectos artificiales.
+- Lo que NO debe ser: portfolio genérico de fotógrafo, web corporativa, plantilla, landing comercial. Debe sentirse como una exposición curada o un libro de artista.
 
-## 6. Estado del proyecto
+## 2. Reglas operativas (obligatorias)
 
-- **Fase actual:** 0 — Inicialización y contexto (en curso).
-- **Implementación:** ninguna. El repositorio solo contiene este sistema de documentación, `context.txt` y git inicializado.
-- **Materiales de la artista:** pendientes de entrega (dossier PDF, imágenes de obra, retrato, video, CV). Ver `docs/project/CONTENT_GUIDELINES.md` → "Materiales pendientes".
-- Próxima fase prevista: **Fase 1 — Fundación visual** (requiere aprobación explícita; ver `docs/workflow/IMPLEMENTATION_PHASES.md`).
+1. **No inventar contenido.** Todo dato de obra (títulos, medidas, años, soportes) proviene del dossier. Las marcas de estado del contenido se definen en `docs/project/CONTENT_STATUS.md` — usarlas SIEMPRE en el código y el copy.
+2. **Integridad de la obra.** Jamás recortar, deformar ni retocar imágenes de obra (`object-fit: contain` + proporciones reales). Render limitado según `docs/project/ASSETS_MANIFEST.md` hasta llegar assets finales.
+3. **Tokens-first.** Ningún valor mágico de color/espaciado/tipografía en componentes: todo pasa por el sistema de `docs/design/redesign_v2/02_DESIGN_TOKENS.md`. Un token nuevo exige documentar el cambio ahí mismo.
+4. **Solo lo pedido.** Implementar la fase en curso, completa; no anticipar infraestructura ni páginas futuras. **No se inicia una fase sin aprobación explícita del usuario** (gobernanza completa en `docs/workflow/EXECUTION_PHASES.md`).
+5. **Diseño del sistema v2 es la única fuente de diseño** (`docs/design/redesign_v2/`). Nada de: bordes decorativos, sombras, gradientes, iconos, radios > 0, cards, patrones genéricos de UI.
+6. **Accesibilidad AA no negociable** (`docs/design/redesign_v2/06_INTERACTION_MOTION_A11Y.md`) y QA con `docs/workflow/QUALITY_CHECKLIST.md` al cierre de cada fase.
+7. **Decisiones relevantes se documentan:** cambiar algo establecido exige actualizar el doc y el ADR implicado. No alterar el sistema en silencio.
 
-## 7. Gobernanza de fases
+## 3. Mapa de la capa de contexto
 
-Las fases (`IMPLEMENTATION_PHASES.md`) establecen el orden pero **no se avanza automáticamente** al terminar una: hay que esperar aprobación explícita. No empezar la siguiente fase sin el OK del usuario.
+```text
+frontend/
+├── CLAUDE.md                             ← ESTE ARCHIVO (entrada)
+├── docs/
+│   ├── design/redesign_v2/               ← ESPECIFICACIÓN DE DISEÑO VIGENTE (única fuente, aprobada)
+│   │   ├── 00_README.md                  índice, estado, pendientes de decisión
+│   │   ├── 01_DESIGN_CONCEPT.md          concepto, referencias, riesgos/variantes
+│   │   ├── 02_DESIGN_TOKENS.md           tokens listos para código (color, tipo, grid, motion)
+│   │   ├── 03_LAYOUT_BLUEPRINTS.md       wireframe de las 7 rutas
+│   │   ├── 04_COMPONENT_SPEC.md          anatomía/estados de los 14 componentes
+│   │   ├── 05_CONTENT_MAP.md             dossier → sitio: series, obras, placas, contacto
+│   │   └── 06_INTERACTION_MOTION_A11Y.md interacción, responsive, WCAG AA, performance
+│   ├── architecture/
+│   │   ├── ADR-000_STACK.md              ← DECISIÓN PENDIENTE: stack (resolver antes de la F-1)
+│   │   └── ARCHITECTURE.md               estado real del repositorio
+│   ├── project/
+│   │   ├── CONTENT_STATUS.md             bloqueantes de contenido + lenguaje de marcas `(d)` / `(d-EN)`
+│   │   └── ASSETS_MANIFEST.md            inventario de assets, fuentes a descargar, límites de render
+│   └── workflow/
+│       ├── EXECUTION_PHASES.md           fases de ejecución + Definition of Done + gobernanza
+│       └── QUALITY_CHECKLIST.md          QA por fase (correr al cerrar cada una)
+├── assets/images/                        ← 6 obras reales (identificación pendiente)
+└── mockup/                               ← maqueta v1 (histórico; solo referencia, NO evolucionar)
+```
+
+## 4. Estado actual
+
+- **Fase actual: F-0b** — resolver `docs/architecture/ADR-000_STACK.md` (el contexto ya está montado).
+- **Implementado de la web v2: nada.** La única artefacta anterior es `mockup/` (v1, descartable, no evolucionar).
+- **Fase prevista a continuación:** F-1 Fundación visual (tokens + fuentes + base layout) — requiere ADR-000 resuelto y aprobación.
+
+## 5. Rutas del sitio (fijas)
+
+`/` · `/work` · `/work/[slug]` · `/about` · `/press` · `/exhibitions` · `/contact` — no añadir secciones primarias sin aprobación explícita.
+
+## 6. Materiales de referencia fuera del repo (no versionados)
+
+- Dossier oficial: `../Dossier 2012-2025 Linet Sánchez español_compressed-3.pdf` (raíz del workspace).
+- Sitios de referencia: `../docs/references/reference_pages.txt` (contexto histórico).
