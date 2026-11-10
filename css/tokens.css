@@ -1,0 +1,129 @@
+/* ============================================================================
+   tokens.css — mockup v2 "THE EMPTY STAGE"
+   Traslación literal de docs/design/redesign_v2/02_DESIGN_TOKENS.md
+   Único archivo del mockup previsto para reutilizarse en la ejecución real.
+   ========================================================================== */
+
+/* --- 0. Fuentes locales (assets/fonts/, descarga offline) ----------------- */
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 200 800;
+  font-stretch: normal;
+  font-display: swap;
+  src: url('../assets/fonts/Newsreader-var-latin.woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 200 800;
+  font-stretch: normal;
+  font-display: swap;
+  src: url('../assets/fonts/Newsreader-Italic-var-latin.woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'Instrument Sans';
+  font-style: normal;
+  font-weight: 400 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url('../assets/fonts/InstrumentSans-var-latin.woff2') format('woff2-variations');
+}
+
+/* --- 1. Color ------------------------------------------------------------- */
+:root {
+  /* luz */
+  --plaster:   #F3F2F0;  /* base del sitio, blanco yeso (frío, no crema) */
+  --bone:      #E9E7E3;  /* "poza" de obra, paneles alternos */
+  --ink:       #1D1C1B;  /* texto sobre luz */
+
+  /* penumbra */
+  --stage:     #141413;  /* fondo del acto oscuro (negro teatro, no #000) */
+  --stage-ink: #B9B7B2;  /* texto sobre penumbra (AA sobre --stage) */
+  --stage-well:#0F0F0E;  /* poza de obra en la penumbra */
+
+  /* secundarios */
+  --meta:      #77756F;  /* texto secundario sobre luz (>= 4.5:1) */
+  --meta-dark: #8A8882;  /* texto secundario sobre penumbra */
+  --hairline:  #DAD8D3;  /* separador mínimo; uso restringido (01 §6) */
+}
+
+:root {
+  --font-display: 'Newsreader', Georgia, serif;      /* display + cuerpo, eje óptico 6–72 */
+  --font-ui: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif; /* meta/nav/placas */
+}
+
+/* --- 3. Escala tipográfica (fluida, clamp) -------------------------------- */
+:root {
+  --fs-hero:    clamp(42px, 6.5vw, 92px);
+  --fs-display: clamp(30px, 3.8vw, 54px);
+  --fs-title:   clamp(22px, 2.4vw, 34px);
+  /* decisión v2 mockup: el statement hero sube de --fs-body-lg a su propio
+     token (añadido al doc 02 §3 al aplicar el mockup — jerarquía del Acto I) */
+  --fs-statement: clamp(22px, 2.4vw, 34px);
+  --fs-body-lg: clamp(18px, 1.5vw, 21px);
+  --fs-body:    clamp(15px, 1.05vw, 17px);
+  --fs-meta:    clamp(12px, 0.9vw, 13px);
+  --fs-nav:     clamp(13px, 0.95vw, 14px);
+}
+:root {
+  --lh-display: 1.06;
+  --lh-body:    1.55;
+  --lh-meta:    1.45;
+  --ls-display: -0.01em;
+  --ls-meta:    0.04em;
+}
+
+/* --- 4. Espacio (base 4) --------------------------------------------------- */
+:root {
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
+  --space-9: 96px; --space-10: 128px; --space-11: 192px;
+}
+
+/* --- 5. Layout y grid ------------------------------------------------------ */
+:root {
+  --max-width: 1360px;
+  --cols: 12;
+  --gutter: clamp(16px, 1.4vw, 24px);
+  --page-margin: clamp(20px, 4vw, 64px);
+  --bp-tablet: 768px;
+  --bp-desktop: 1200px;
+}
+
+/* --- 6. Forma y bordes ----------------------------------------------------- */
+:root {
+  --radius: 0;
+  --border: none;
+  --shadow: none;
+}
+
+/* --- 7. Imágenes de obra ---------------------------------------------------- */
+:root {
+  --img-well: var(--bone);
+  --img-well-dark: var(--stage-well);
+  --img-lit: 1;
+  --img-rest: 0.94;
+  --img-hover-dur: 320ms;
+}
+
+/* --- 8. Motion -------------------------------------------------------------- */
+:root {
+  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+  --dur-hover: 200ms;
+  --dur-lit: 320ms;
+  --dur-reveal: 1100ms;
+  --dur-nav: 160ms;
+}
+
+/* --- 9. Iconos, ornamento ---------------------------------------------------- */
+/* 0 – sin iconos, sin ornamentos (ver 02 §9) */
+
+/* --- 10/11. Variantes y capas ------------------------------------------------- */
+:root {
+  --z-base: 0;
+  --z-media: 1;
+  --z-nav: 10;
+  --z-menu: 40;
+  --z-skip: 100;
+}

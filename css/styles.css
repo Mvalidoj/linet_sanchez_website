@@ -1,0 +1,536 @@
+/* ============================================================================
+   styles.css — mockup v2 "THE EMPTY STAGE" · Home
+   Desechable: implementa 03 §A con los componentes de 04. CSS-only (sin JS).
+   ========================================================================== */
+
+/* --- Reset/base ----------------------------------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--plaster);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: var(--lh-body);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+h1, h2, h3, p, ul, ol, figure, blockquote { margin: 0; }
+
+ul, ol { padding: 0; list-style: none; }
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  transition: color var(--dur-hover) var(--ease), text-underline-offset var(--dur-hover) var(--ease);
+}
+
+a:hover { text-underline-offset: 0.22em; }
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* --- Skip link -------------------------------------------------------------- */
+.skip-link {
+  position: fixed;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: var(--z-skip);
+  background: var(--plaster);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-ui);
+  font-size: var(--fs-nav);
+  font-weight: 500;
+  text-decoration-thickness: 1px;
+  transform: translateY(-300%);
+  transition: transform var(--dur-nav) var(--ease);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* --- Contenedores ------------------------------------------------------------ */
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--page-margin);
+}
+
+.grid12 {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+
+/* Acts: ritmo editorial vertical (02 §4) */
+.act { padding-block: var(--space-11); }
+
+/* --- Header / nav (04 §1) ------------------------------------------------------ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  background: var(--plaster);
+}
+
+.header-inner {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-6);
+  padding-block: var(--space-5);
+}
+
+.wordmark {
+  font-size: var(--fs-title);
+  font-weight: 300;
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-display);
+  white-space: nowrap;
+}
+
+.wordmark a {
+  text-decoration: none;
+}
+
+.primary-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-5);
+}
+
+.nav-link,
+.more summary {
+  font-family: var(--font-ui);
+  font-size: var(--fs-nav);
+  font-weight: 450;
+  letter-spacing: var(--ls-meta);
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.nav-link,
+.more { position: relative; }
+
+.nav-link::after,
+.more summary::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: -0.35em;
+  height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-nav) var(--ease);
+}
+
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after,
+.more summary:hover::after,
+.more[open] summary::after {
+  transform: scaleX(1);
+}
+
+.more summary { list-style: none; }
+.more summary::-webkit-details-marker { display: none; }
+
+.more-panel {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 220px;
+  padding: var(--space-5);
+  background: var(--plaster);
+}
+
+.more-panel ul { display: grid; gap: var(--space-4); }
+
+/* --- Menú móvil (checkbox-hack, aprox de mockup; el real exige JS) -------------- */
+.menu-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.menu-toggle-label {
+  display: none;
+  margin-left: auto;
+  font-family: var(--font-ui);
+  font-size: var(--fs-nav);
+  font-weight: 450;
+  letter-spacing: var(--ls-meta);
+  cursor: pointer;
+}
+
+.menu-panel {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-menu);
+  display: grid;
+  place-content: center;
+  gap: var(--space-6);
+  background: var(--plaster);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity var(--dur-menu, 250ms) var(--ease), transform 250ms var(--ease), visibility 0s 250ms;
+}
+
+.menu-panel ul { display: grid; gap: var(--space-5); text-align: left; }
+
+.menu-panel a {
+  font-size: var(--fs-display);
+  font-weight: 300;
+  letter-spacing: var(--ls-display);
+  text-decoration: none;
+}
+
+.menu-panel a:hover { color: var(--meta); }
+
+.menu-toggle:checked ~ .menu-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 250ms var(--ease), transform 250ms var(--ease);
+}
+
+#menu-toggle:focus-visible { outline: none; }
+#menu-toggle:focus-visible ~ * .menu-toggle-label,
+.menu-toggle-label:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+body:has(.menu-toggle:checked) { overflow: hidden; }
+
+/* --- Statement (04 §4) ----------------------------------------------------------- */
+.statement {
+  font-size: var(--fs-statement);
+  font-style: italic;
+  font-weight: 250;
+  line-height: var(--lh-body);
+  max-width: 17ch;
+}
+
+/* --- Poza de obra (04 §6) ---------------------------------------------------------- */
+.work-well {
+  background: var(--img-well);
+  padding: var(--space-5);
+}
+
+.work-well img {
+  width: 100%;
+  opacity: var(--img-rest);
+  transition: opacity var(--img-hover-dur) var(--ease);
+}
+
+.link-well { display: block; text-decoration: none; }
+
+.link-well:hover img,
+.link-well:focus-visible img { opacity: var(--img-lit); }
+
+/* --- Placa (04 §5) -------------------------------------------------------------------- */
+.work-plate {
+  margin-top: var(--space-5);
+  display: grid;
+  gap: var(--space-1);
+}
+
+.plate-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--fs-meta);
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.plate-meta {
+  font-family: var(--font-ui);
+  font-size: var(--fs-meta);
+  letter-spacing: var(--ls-meta);
+  color: var(--meta);
+  font-variant-numeric: tabular-nums;
+}
+
+.plate-pending {
+  font-family: var(--font-ui);
+  font-size: var(--fs-meta);
+  letter-spacing: var(--ls-meta);
+  color: var(--meta);
+}
+
+/* --- Reveal único (06 §2) ------------------------------------------------------------------ */
+.reveal .work-well img { animation: lights-up var(--dur-reveal) var(--ease) both; }
+
+.reveal .work-plate { animation: fade-in 400ms ease-out 600ms both; }
+
+@keyframes lights-up {
+  from { opacity: 0; }
+  to { opacity: var(--img-rest); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- Acto I -------------------------------------------------------------------------------- */
+.act-i .grid12 { align-items: center; row-gap: var(--space-9); }
+
+.statement { grid-column: 1 / 4; }
+
+.act-i .work-well { grid-column: 4 / 11; }
+
+.act-i .work-well--primary img { max-height: 60vh; object-fit: contain; width: auto; max-width: 100%; margin-inline: auto; }
+
+/* --- Acto II — catálogo (04 §7) --------------------------------------------------------------- */
+.act-ii { padding-top: 0; }
+
+.series-index { grid-column: 1 / 4; }
+
+.series-index-label {
+  font-family: var(--font-ui);
+  font-size: var(--fs-meta);
+  letter-spacing: var(--ls-meta);
+  color: var(--meta);
+  padding-bottom: var(--space-4);
+}
+
+.series-index li { border-top: 1px solid var(--hairline); }
+
+.series-index a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-3);
+  text-decoration: none;
+}
+
+.series-index .si-years {
+  font-family: var(--font-ui);
+  font-size: var(--fs-meta);
+  letter-spacing: var(--ls-meta);
+  color: var(--meta);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.series-index .si-name {
+  font-size: var(--fs-body-lg);
+  font-weight: 300;
+  transition: font-weight var(--dur-nav) ease; /* peso 300→400 en hover (04 §7) */
+}
+
+.series-index a:hover .si-name { font-weight: 400; }
+
+.catalogue { grid-column: 4 / 11; display: grid; row-gap: var(--space-10); }
+
+.work-row { max-width: 42ch; margin-inline: 0; }
+.work-row--wide { max-width: 62ch; }
+.work-row:nth-child(even) { margin-inline: auto; }
+
+/* --- Acto III — 00:00:00 (penumbra) ------------------------------------------------------------ */
+.act-iii {
+  background: var(--stage);
+  color: var(--stage-ink);
+  padding-block: var(--space-11);
+  padding-left: max(var(--page-margin), env(safe-area-inset-left));
+  padding-right: max(var(--page-margin), env(safe-area-inset-right));
+}
+
+.act-iii .act-marker {
+  display: block;
+  text-align: right;
+  font-family: var(--font-ui);
+  font-size: clamp(20px, 2.2vw, 30px);
+  font-weight: 450;
+  letter-spacing: var(--ls-meta);
+  color: var(--stage-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.act-iii .work-well {
+  background: var(--stage-well);
+  max-width: 560px;
+  margin: var(--space-10) auto var(--space-7);
+}
+
+.act-iii .work-well img { opacity: var(--img-rest); }
+
+.act-iii :focus-visible { outline-color: var(--stage-ink); }
+
+.work-plate--dark .plate-pending { color: var(--meta-dark); }
+
+.quote {
+  max-width: 52ch;
+  margin-left: 0;
+}
+
+.quote p {
+  font-style: italic;
+  font-size: var(--fs-body-lg);
+  font-weight: 300;
+  line-height: var(--lh-body);
+  color: var(--stage-ink);
+}
+
+.quote cite {
+  display: block;
+  margin-top: var(--space-4);
+  font-family: var(--font-ui);
+  font-style: normal;
+  font-size: var(--fs-meta);
+  letter-spacing: var(--ls-meta);
+  color: var(--meta-dark);
+}
+
+.text-link--dark { color: var(--stage-ink); }
+
+/* --- Acto IV — colofón (04 §12) ------------------------------------------------------------------- */
+.colophon { padding-block: var(--space-11) var(--space-8); }
+
+.colophon-grid { row-gap: var(--space-8); }
+
+.colophon-label {
+  font-family: var(--font-ui);
+  font-size: var(--fs-meta);
+  letter-spacing: var(--ls-meta);
+  color: var(--meta);
+  grid-column: 1 / 4;
+  align-self: baseline;
+}
+
+.colophon-body { grid-column: 4 / 11; }
+
+.colophon-excerpt {
+  font-size: var(--fs-body-lg);
+  max-width: 52ch;
+}
+
+.empty-state {
+  font-family: var(--font-ui);
+  font-size: var(--fs-meta);
+  letter-spacing: var(--ls-meta);
+  color: var(--meta);
+}
+
+.colophon .empty-state { margin-top: var(--space-6); }
+
+.contact-links { display: grid; gap: var(--space-3); max-width: 40ch; }
+
+.contact-links a { font-size: var(--fs-body-lg); }
+
+.footer-bottom {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+.footer-bottom .wordmark { font-size: var(--fs-title); }
+
+.footer-nav { margin-left: auto; display: flex; gap: var(--space-5); }
+
+.footer-nav a { font-family: var(--font-ui); font-size: var(--fs-nav); font-weight: 450; }
+
+.copyright { font-family: var(--font-ui); font-size: var(--fs-meta); letter-spacing: var(--ls-meta); color: var(--meta); }
+
+/* ============================================================================
+   Responsive (06 §4)
+   ========================================================================== */
+
+/* Tablet: el rail deja de ser columna */
+@media (max-width: 1199px) {
+  .statement { grid-column: 1 / -1; margin-bottom: var(--space-8); max-width: 32ch; }
+
+  .act-i .work-well { grid-column: 2 / -1; }
+
+  .series-index { grid-column: 1 / -1; }
+
+  .series-index ul {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--space-7);
+  }
+
+  .series-index li { border-top: none; }
+
+  .catalogue { grid-column: 1 / -1; }
+
+  .colophon-label { grid-column: 1 / -1; }
+  .colophon-body { grid-column: 1 / -1; }
+}
+
+/* Móvil */
+@media (max-width: 767px) {
+  .act { padding-block: var(--space-9); }
+
+  .primary-nav,
+  .more { display: none; }
+
+  .menu-toggle-label { display: block; }
+
+  .statement { font-size: clamp(20px, 5.4vw, 26px); max-width: 100%; }
+
+  .act-i .work-well { grid-column: 1 / -1; padding: var(--space-3); }
+
+  .act-ii .container { display: block; }
+
+  .series-index { margin-bottom: var(--space-8); }
+
+  /* lista vertical de nuevo (el flex de tablet se corta en 390px) */
+  .series-index ul { display: grid; gap: 0; }
+
+  .series-index li { border-top: 1px solid var(--hairline); padding-right: 0; }
+
+  .catalogue { row-gap: var(--space-9); margin-top: var(--space-8); }
+
+  .work-row:nth-child(even) { margin-inline: 0; }
+
+  .act-iii { padding-block: var(--space-10); }
+
+  .act-iii .work-well { margin-block: var(--space-8) var(--space-6); }
+
+  .act-iii .act-marker { text-align: left; }
+
+  .footer-bottom { flex-wrap: wrap; row-gap: var(--space-4); }
+
+  .footer-nav { order: 3; width: 100%; }
+}
+
+/* --- Reduced motion (06 §2) -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .reveal .work-well img { animation: none; opacity: var(--img-rest); }
+  .reveal .work-plate { animation: none; }
+
+  .menu-panel { transition: opacity 0s, visibility 0s; transform: none; }
+
+  .work-well img,
+  .nav-link::after,
+  .more summary::after,
+  a,
+  .skip-link,
+  .series-index .si-name { transition: none; }
+}
