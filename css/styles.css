@@ -209,6 +209,31 @@ a:hover { text-underline-offset: 0.22em; }
 
 .menu-panel a:hover { color: var(--meta); }
 
+/* Cierre (mockup CSS-only): scrim clicable debajo del panel + botón "Close"
+   dentro de él. El botón real y `Esc` exigen JS (F-1, 04 §2). */
+.menu-scrim { display: none; }
+
+.menu-toggle:checked ~ .menu-scrim {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-menu) - 1);
+  cursor: default;
+}
+
+.menu-close {
+  position: fixed;
+  top: var(--space-5);
+  right: max(var(--page-margin), env(safe-area-inset-right));
+  font-family: var(--font-ui);
+  font-size: var(--fs-nav);
+  font-weight: 450;
+  letter-spacing: var(--ls-meta);
+  cursor: pointer;
+}
+
+.menu-close:hover { color: var(--meta); }
+
 .menu-toggle:checked ~ .menu-panel {
   opacity: 1;
   visibility: visible;

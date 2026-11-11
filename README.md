@@ -21,7 +21,7 @@ Notas:
 
 | Límite | Detalle | Real |
 |---|---|---|
-| Menú móvil | checkbox-hack CSS: se abre/pulsa con puntero; con teclado el foco llega al label pero no se conmuta con Enter en todos los navegadores; sin focus trap ni `Esc` | panel modal accesible en F-1 (04 §2) |
+| Menú móvil | checkbox-hack CSS: se abre/pulsa con puntero; cierre con "Close" (dentro del panel) o clic en cualquier zona vacía (scrim-label oculto); con teclado el foco llega al label pero no se conmuta con Enter en todos los navegadores; sin focus trap ni `Esc` | panel modal accesible en F-1 (04 §2) |
 | Menú desktop "More" | `<details>` nativo (accesible pero sin transición) | componente con motion en F-1 |
 | Estado del menú | `body:has(...)` + `overflow:hidden` (sin scroll-lock real por focus) | focus trap real en F-1 |
 | Reveal | animation CSS al cargar (una vez, sin control por visita) | JS mínimo en ejecución para "una vez por visita" |
