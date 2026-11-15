@@ -1,0 +1,314 @@
+/* styles.css — Home layout, copied from the pinomusi.com structure
+ * Adapted content: Linet Sánchez. CSS-only (no JS), offline-safe.
+ * The reference saves every value as a token in tokens.css; no magic values here.
+ */
+
+/* ---- reset ---- */
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-site);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover,
+a:focus {
+  color: var(--color-ink-strong);
+}
+
+:focus-visible {
+  outline: var(--focus-outline);
+  outline-offset: 3px;
+}
+
+/* ---- visually hidden (a11y headings) ---- */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- skip link ---- */
+
+.skip-link {
+  position: absolute;
+  left: var(--side);
+  top: 12px;
+  padding: 6px 10px;
+  background: var(--color-bg);
+  color: var(--color-ink-strong);
+  z-index: 100;
+  transform: translateY(-200%);
+  transition: transform 150ms;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ---- fixed header: wordmark left, lowercase nav right ---- */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: var(--color-bg);
+  z-index: 10;
+}
+
+.site-header::after {
+  /* hairline appears only when the page is scrolled (needs JS in production;
+     kept here as the resting-state style token) */
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-bottom: 1px solid var(--color-hairline-dark);
+  opacity: 0;
+}
+
+.wordmark {
+  position: absolute;
+  left: var(--side);
+  top: 34px;
+  font-size: var(--fs-wordmark);
+  font-weight: bold;
+  color: var(--color-wordmark);
+  text-decoration: none;
+}
+
+.wordmark:focus-visible {
+  outline: var(--focus-outline);
+}
+
+.site-nav ul {
+  position: absolute;
+  right: var(--side);
+  top: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: var(--nav-gap);
+}
+
+.site-nav a {
+  font-size: var(--fs-nav);
+  color: var(--color-ink);
+  text-decoration: none;
+  padding: 6px 0 2px 0;
+  border-bottom: 1px solid var(--color-bg); /* reserved line so hover doesn't shift layout */
+}
+
+.site-nav a:hover,
+.site-nav a:focus {
+  border-bottom-color: var(--color-ink);
+}
+
+/* ---- Act: the artwork stage ---- */
+
+.intro {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--top-offset) var(--side) var(--air-bottom) var(--side);
+  min-height: calc(100vh - var(--header-height));
+}
+
+.slideshow {
+  position: relative;
+  width: min(100%, calc((100svh - var(--top-offset) - var(--air-bottom)) * var(--slideshow-ratio)));
+  aspect-ratio: var(--slideshow-ratio);
+  margin: 0 auto;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain; /* artwork integrity: never crop or distort */
+  border: 1px solid var(--color-hairline);
+}
+
+.slide a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
+  text-decoration: none;
+}
+
+/* crossfade: one artwork lit at a time — one 30s cycle, 6 slides × 5s dwell,
+   350ms fade overlapped at each boundary. Percentages are exact fractions
+   of the 30s cycle: 1s = 3.333%, 0.35s = 1.1667%.
+   Windows (s): in[a,b] / out[a,b]
+   1: hold 0–4.65 · out 4.65–5     (in happens before 0, written at the loop edge)
+   2: in 4.65–5     · out 9.65–10
+   3: in 9.65–10    · out 14.65–15
+   4: in 14.65–15   · out 19.65–20
+   5: in 19.65–20   · out 24.65–25
+   6: in 24.65–25   · out 29.65–30 */
+.slideshow > .slide {
+  opacity: 0;
+}
+
+.slideshow > .slide:first-child {
+  opacity: 1; /* resting state without animation (reduced motion, no CSS animation support) */
+}
+
+@keyframes slide-1 {
+  0%     { opacity: 1; }
+  15.5%  { opacity: 1; }
+  16.66% { opacity: 0; }
+  98.83% { opacity: 0; }
+  100%   { opacity: 1; }
+}
+
+@keyframes slide-2 {
+  0%     { opacity: 0; }
+  15.5%  { opacity: 0; }
+  16.66% { opacity: 1; }
+  32.16% { opacity: 1; }
+  33.33% { opacity: 0; }
+  100%   { opacity: 0; }
+}
+
+@keyframes slide-3 {
+  0%     { opacity: 0; }
+  32.16% { opacity: 0; }
+  33.33% { opacity: 1; }
+  48.83% { opacity: 1; }
+  50%    { opacity: 0; }
+  100%   { opacity: 0; }
+}
+
+@keyframes slide-4 {
+  0%     { opacity: 0; }
+  48.83% { opacity: 0; }
+  50%    { opacity: 1; }
+  64.49% { opacity: 1; }
+  66.66% { opacity: 0; }
+  100%   { opacity: 0; }
+}
+
+@keyframes slide-5 {
+  0%     { opacity: 0; }
+  64.49% { opacity: 0; }
+  66.66% { opacity: 1; }
+  81.16% { opacity: 1; }
+  83.33% { opacity: 0; }
+  100%   { opacity: 0; }
+}
+
+@keyframes slide-6 {
+  0%     { opacity: 0; }
+  81.16% { opacity: 0; }
+  83.33% { opacity: 1; }
+  98.83% { opacity: 1; }
+  100%   { opacity: 0; }
+}
+
+.slide:nth-child(n) { animation: none; }
+.slide:nth-child(1) { animation: slide-1 calc(var(--dur-dwell) * 6) infinite; }
+.slide:nth-child(2) { animation: slide-2 calc(var(--dur-dwell) * 6) infinite; }
+.slide:nth-child(3) { animation: slide-3 calc(var(--dur-dwell) * 6) infinite; }
+.slide:nth-child(4) { animation: slide-4 calc(var(--dur-dwell) * 6) infinite; }
+.slide:nth-child(5) { animation: slide-5 calc(var(--dur-dwell) * 6) infinite; }
+.slide:nth-child(6) { animation: slide-6 calc(var(--dur-dwell) * 6) infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .slide { animation: none !important; }
+  .slideshow > .slide { opacity: 0; }
+  .slideshow > .slide:first-child { opacity: 1; }
+}
+
+/* ---- footer: one quiet line after the air ---- */
+
+.site-footer {
+  padding: 0 var(--side) 24px var(--side);
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: var(--fs-meta);
+  color: var(--color-ink);
+}
+
+/* ---- responsive ---- */
+
+@media (max-width: 950px) {
+  :root {
+    --side: 20px;
+  }
+
+  .site-header {
+    position: relative;
+    height: auto;
+    padding: 20px var(--side) 0 var(--side);
+  }
+
+  .wordmark {
+    position: static;
+    display: inline-block;
+  }
+
+  .site-nav ul {
+    position: static;
+    margin-top: 8px;
+    flex-wrap: wrap;
+    row-gap: 4px;
+  }
+
+  .intro {
+    padding-top: 32px;
+  }
+
+  .slideshow {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-nav ul {
+    gap: 14px;
+  }
+
+  .site-nav a {
+    font-size: 13.5px;
+  }
+}
