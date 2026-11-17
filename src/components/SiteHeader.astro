@@ -1,0 +1,33 @@
+---
+// Fixed white header: wordmark left, lowercase nav right (ratified design).
+// Absolute hrefs (relative ones 404 on inner pages); `aria-current` marks the
+// active section (maps the reference's underlined selected item).
+const nav = [
+  { label: 'work', href: '/work' },
+  { label: 'about', href: '/about' },
+  { label: 'exhibitions', href: '/exhibitions' },
+  { label: 'press', href: '/press' },
+  { label: 'contact', href: '/contact' },
+] as const;
+
+const pathname = Astro.url.pathname;
+const isCurrent = (href: string): boolean =>
+  pathname === href || (href !== '/' && pathname.startsWith(`${href}/`) || (href !== '/' && pathname.startsWith(`${href}.html`)));
+---
+
+<header class="site-header">
+  <a class="wordmark" href="/">Linet Sánchez</a>
+  <nav class="site-nav" aria-label="Main navigation">
+    <ul>
+      {
+        nav.map((item) => (
+          <li>
+            <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>

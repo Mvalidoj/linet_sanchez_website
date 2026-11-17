@@ -1,0 +1,48 @@
+{
+  "home": {
+    "slideshow": [
+      {
+        "image": "/images/home/work-1.jpg",
+        "width": 750,
+        "height": 750,
+        "alt": "Linet Sánchez — artwork identification pending, © Linet Sánchez",
+        "href": "/work"
+      },
+      {
+        "image": "/images/home/work-2.jpg",
+        "width": 720,
+        "height": 892,
+        "alt": "Linet Sánchez — artwork identification pending, © Linet Sánchez",
+        "href": "/work"
+      },
+      {
+        "image": "/images/home/work-3.jpg",
+        "width": 750,
+        "height": 750,
+        "alt": "Linet Sánchez — artwork identification pending, © Linet Sánchez",
+        "href": "/work"
+      },
+      {
+        "image": "/images/home/work-4.jpg",
+        "width": 750,
+        "height": 750,
+        "alt": "Linet Sánchez — artwork identification pending, © Linet Sánchez",
+        "href": "/work"
+      },
+      {
+        "image": "/images/home/work-5.webp",
+        "width": 720,
+        "height": 655,
+        "alt": "Linet Sánchez — artwork identification pending, © Linet Sánchez",
+        "href": "/work"
+      },
+      {
+        "image": "/images/home/work-6.webp",
+        "width": 720,
+        "height": 480,
+        "alt": "Linet Sánchez — artwork identification pending, © Linet Sánchez",
+        "href": "/work"
+      }
+    ]
+  }
+}

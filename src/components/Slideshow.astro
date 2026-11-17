@@ -1,0 +1,26 @@
+---
+/**
+ * Home slideshow — markup identical to the ratified design. The crossfade is
+ * 100% CSS (keyframes in global.css assume exactly 6 slides; a 30s cycle,
+ * 5s dwell, 350ms fade). No JavaScript on the client.
+ */
+import type { SlideshowEntry } from '@domain/types';
+
+interface Props {
+  items: SlideshowEntry[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="slideshow" role="group" aria-label="Selected works slideshow">
+  {
+    items.map((item) => (
+      <div class="slide">
+        <a href={item.href}>
+          <img src={item.image} width={item.width} height={item.height} alt={item.alt} />
+        </a>
+      </div>
+    ))
+  }
+</div>

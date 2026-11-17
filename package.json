@@ -17,5 +17,8 @@
   },
   "engines": {
     "node": ">=22.22.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12"
   }
 }

@@ -1,0 +1,18 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Slideshow from '@components/Slideshow.astro';
+import { getHomeSlideshow } from '@data/queries';
+
+const slideshow = await getHomeSlideshow();
+---
+
+<BaseLayout
+  title="Linet Sánchez"
+  description="Linet Sánchez — visual artist. Photography, sculpture and video. Havana, Cuba."
+  mainClass="intro"
+>
+  <h1 class="visually-hidden">Linet Sánchez — selected works</h1>
+  <!-- Artwork identification pending: titles/series not confirmed against the dossier (blocker B2).
+       Images keep their native proportions (object-fit: contain, explicit dimensions). -->
+  <Slideshow items={slideshow} />
+</BaseLayout>

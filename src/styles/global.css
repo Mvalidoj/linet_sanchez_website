@@ -1,13 +1,65 @@
-/* styles.css — Home layout, copied from the pinomusi.com structure
- * Adapted content: Linet Sánchez. CSS-only (no JS), offline-safe.
- * The reference saves every value as a token in tokens.css; no magic values here.
+/* global.css — single global stylesheet.
+ *
+ * Design direction: ratified copy of the pinomusi.com structure (ADR-003),
+ * adapted content: Linet Sánchez. CSS-only (no JS), offline-safe.
+ * Tokens live in the @theme block below and are described in docs/design.
+ * The legacy css/tokens.css + css/styles.css were migrated verbatim in Phase 1;
+ * this file is the single source of truth for styling.
  */
+
+@import 'tailwindcss';
+
+@theme {
+  /* color — strict monochrome on white */
+  --color-bg: #ffffff;          /* page background */
+  --color-ink: #666666;         /* body text, nav, meta */
+  --color-ink-strong: #000000;  /* hover / active text */
+  --color-wordmark: #2e2e2e;    /* wordmark text */
+  --color-hairline: #f0f0f0;    /* 1px border around artworks */
+  --color-hairline-dark: #e1e1e1; /* header bottom hairline on scroll */
+
+  /* type — plain humanist sans, no webfonts (deliberate divergence from the
+     reference, which loads Roboto for body text; see docs/design/TYPOGRAPHY) */
+  --font-site: Arial, Helvetica, sans-serif;
+  --fs-nav: 14.5px;
+  --fs-wordmark: 15px;
+  --fs-meta: 12px;
+
+  /* layout — literal proportions taken from the reference design */
+  --header-height: 100px;
+  --content-max: 1600px;
+  --side: 30px;          /* page side margin */
+  --top-offset: 145px;   /* main content offset below the fixed header */
+  --nav-gap: 22px;       /* gap between nav items */
+  --air-bottom: 90px;    /* silence above the footer (the empty space is the design) */
+
+  /* slideshow — native aspect ratio of the tallest artwork (portrait work-2).
+     The stage keeps this ratio so nothing shifts between slides (CLS 0).
+     The 6 keyframes in this file assume exactly 6 slides (30s cycle);
+     if the slide count ever changes, regenerate them. */
+  --slideshow-ratio: 720 / 892;
+
+  /* motion — only opacity animates; copy of the source timing */
+  --dur-fade: 350ms;   /* slide crossfade */
+  --dur-dwell: 5s;     /* time each artwork stays lit */
+
+  /* a11y */
+  --focus-outline: 2px solid #000000;
+
+  /* breakpoints (matching the ratified design, not Tailwind defaults) */
+  --breakpoint-md: 950px;
+  --breakpoint-sm: 480px;
+}
 
 /* ---- reset ---- */
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: auto; }
+html {
+  scroll-behavior: auto;
+}
 
 body {
   margin: 0;
@@ -81,7 +133,7 @@ a:focus {
 .site-header::after {
   /* hairline appears only when the page is scrolled (needs JS in production;
      kept here as the resting-state style token) */
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   bottom: 0;
@@ -128,7 +180,12 @@ a:focus {
   border-bottom-color: var(--color-ink);
 }
 
-/* ---- Act: the artwork stage ---- */
+/* active page: maps the reference's underlined selected item */
+.site-nav a[aria-current='page'] {
+  border-bottom-color: var(--color-ink);
+}
+
+/* ---- Home: the artwork stage ---- */
 
 .intro {
   max-width: var(--content-max);
@@ -241,7 +298,9 @@ a:focus {
   100%   { opacity: 0; }
 }
 
-.slide:nth-child(n) { animation: none; }
+.slide:nth-child(n) {
+  animation: none;
+}
 .slide:nth-child(1) { animation: slide-1 calc(var(--dur-dwell) * 6) infinite; }
 .slide:nth-child(2) { animation: slide-2 calc(var(--dur-dwell) * 6) infinite; }
 .slide:nth-child(3) { animation: slide-3 calc(var(--dur-dwell) * 6) infinite; }
@@ -250,9 +309,22 @@ a:focus {
 .slide:nth-child(6) { animation: slide-6 calc(var(--dur-dwell) * 6) infinite; }
 
 @media (prefers-reduced-motion: reduce) {
-  .slide { animation: none !important; }
-  .slideshow > .slide { opacity: 0; }
-  .slideshow > .slide:first-child { opacity: 1; }
+  .slide {
+    animation: none !important;
+  }
+  .slideshow > .slide {
+    opacity: 0;
+  }
+  .slideshow > .slide:first-child {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fade: 0ms;
+    --dur-dwell: 99999s; /* crossfade effectively disabled */
+  }
 }
 
 /* ---- footer: one quiet line after the air ---- */
@@ -267,6 +339,27 @@ a:focus {
   margin: 0;
   font-size: var(--fs-meta);
   color: var(--color-ink);
+}
+
+/* ---- stub pages (phase-2 placeholders; typography follows the reference h1) ---- */
+
+.stub-page {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--top-offset) var(--side) var(--air-bottom) var(--side);
+  min-height: calc(100vh - var(--header-height));
+}
+
+.stub-title {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--color-ink);
+}
+
+.stub-note {
+  margin: 0;
+  font-size: var(--fs-meta);
 }
 
 /* ---- responsive ---- */
@@ -294,7 +387,8 @@ a:focus {
     row-gap: 4px;
   }
 
-  .intro {
+  .intro,
+  .stub-page {
     padding-top: 32px;
   }
 
