@@ -39,7 +39,7 @@ Nunca inventar:
 
 ## 4. Metadatos de obras
 
-Cada obra, cuando se conozca, debería tener (según el modelo de contenido en `../architecture/CONTENT_MODEL.md`): título, año, dimensiones, técnica/material, caption y **alt text**.
+Cada obra, cuando se conozca, debería tener (según las colecciones implementadas en `../architecture/CONTENT_MODEL.md`, campos exactos de `src/content.config.ts`): título, año, dimensiones, técnica/material, caption y **alt text** (obligatorio por esquema zod).
 
 - **Alt text:** descriptivo, factual, en inglés. Describir el espacio/composición (p. ej. "Photograph of an empty interior with natural light falling across tiled walls"), no interpretación artística no aprobada. Si no se puede describir una obra porque la imagen no está disponible, registrar el hueco.
 - **Captions:** solo con información verificada (título, año, medio, dimensiones cuando existan).
@@ -72,3 +72,7 @@ Decisión del usuario: **por ahora no se incorporan los archivos al repositorio.
 | Información biográfica verificada (bio, CV) | Pendiente (contenida en el dossier, no tratado) |
 
 **Consecuencia práctica:** hasta que lleguen los materiales, cualquier página con imágenes usará placeholders claramente identificados o composiciones tipográficas; los estados de Press/Exhibitions serán estados vacíos sobrios.
+
+## 8. Dónde vive el contenido (desde 2026-11-17)
+
+No hay CMS externo: **el "CMS" del sitio son los JSON del repositorio** (`src/content/`, colecciones Astro — modelo en `../architecture/CONTENT_MODEL.md`). Editar un contenido = editar el JSON correspondiente y **hacer un commit**, que redeploya el sitio en Cloudflare Pages. Las mismas reglas de este documento (niveles, no inventar, integridad de obra) aplican a cada JSON que se añada o modifique.
