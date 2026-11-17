@@ -1,2 +1,6 @@
 ﻿pinomusi/
 
+# build & dependencies
+node_modules/
+dist/
+.astro/
